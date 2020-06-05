@@ -40,3 +40,57 @@ const siteContent = {
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"])
+
+let middleImg = document.querySelector("#middle-img");
+middleImg.src = siteContent["main-content"]["middle-img-src"];
+
+let ctaImg = document.querySelector("#cta-img");
+ctaImg.src = siteContent["cta"]["img-src"]
+
+/*
+1
+* [ ] Create selectors by using any of the DOM element's methods
+* [ ] Note that IDs have been used on all images. Use the IDs to update src path content
+*/
+let navAnchors = document.querySelectorAll('nav>a');
+navAnchors.forEach((e,i)=>{
+  let aText = siteContent.nav[`nav-item-${i+1}`];
+  e.innerText = aText; e.href = `#${aText}`
+  e.className = "";
+  //add location check to modify className (later)
+});
+
+let h4Nodes = document.querySelectorAll(".text-content>h4");
+let pNodes = document.querySelectorAll(".text-content>p");
+let sections = ["features","about","services","product","vision"];
+h4Nodes.forEach((e,i)=>{
+    h4Nodes[i].innerText = siteContent["main-content"][`${sections[i]}-h4`];
+    pNodes[i].innerText = siteContent["main-content"][`${sections[i]}-content`];
+});
+
+let contactNodes = document.querySelector(".contact").children;
+Object.values(siteContent.contact).forEach((e,i)=>{
+  contactNodes[i].innerText = e;
+})
+
+
+
+/*
+2
+* [ ] Remember, NO direct updating of the HTML source is allowed.
+* [ ] Using your selectors, update the content to match the example file
+* [ ] Remember to update the src attributes on images
+*/
+
+/*
+3
+* [ ] Change the color of the navigation text to be green.
+* [ ] Utilize `.appendChild()` and `.prepend()` to add two new items to the navigation system. You can call them whatever you want.
+* [ ] Check your work by looking at the [original html](original.html) in the browser
+*/
+
+/*
+stretch
+* [ ] Update styles throughout the page as you see fit. Study what happens when you updated the DOM using style in JavaScript.  
+* [ ] Study tomorrow's lesson on events and try to integrate a button that can update content on the site with a click of a button.  You could build a similar data object with new values to help you test the click event.
+*/
