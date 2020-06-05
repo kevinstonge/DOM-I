@@ -41,17 +41,23 @@ const siteContent = {
 let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"])
 
+/*
+1
+* [ ] Create selectors by using any of the DOM element's methods
+* [ ] Note that IDs have been used on all images. Use the IDs to update src path content
+
+2
+* [ ] Remember, NO direct updating of the HTML source is allowed.
+* [ ] Using your selectors, update the content to match the example file
+* [ ] Remember to update the src attributes on images
+*/
+
 let middleImg = document.querySelector("#middle-img");
 middleImg.src = siteContent["main-content"]["middle-img-src"];
 
 let ctaImg = document.querySelector("#cta-img");
 ctaImg.src = siteContent["cta"]["img-src"]
 
-/*
-1
-* [ ] Create selectors by using any of the DOM element's methods
-* [ ] Note that IDs have been used on all images. Use the IDs to update src path content
-*/
 let navAnchors = document.querySelectorAll('nav>a');
 navAnchors.forEach((e,i)=>{
   let aText = siteContent.nav[`nav-item-${i+1}`];
@@ -73,21 +79,17 @@ Object.values(siteContent.contact).forEach((e,i)=>{
   contactNodes[i].innerText = e;
 })
 
-
-
-/*
-2
-* [ ] Remember, NO direct updating of the HTML source is allowed.
-* [ ] Using your selectors, update the content to match the example file
-* [ ] Remember to update the src attributes on images
-*/
-
 /*
 3
 * [ ] Change the color of the navigation text to be green.
+*/
+document.querySelectorAll("header>nav>a").forEach(e=>e.style = "color: lightgreen; background: #333; padding: 1em");
+/*
 * [ ] Utilize `.appendChild()` and `.prepend()` to add two new items to the navigation system. You can call them whatever you want.
 * [ ] Check your work by looking at the [original html](original.html) in the browser
 */
+// document.querySelector("header>nav").appendChild()
+
 
 /*
 stretch
