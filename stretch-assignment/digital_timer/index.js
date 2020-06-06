@@ -1,4 +1,8 @@
 window.addEventListener('load',()=>{
+    let buttonDiv = document.createElement("div");
+    buttonDiv.id = "buttonDiv";
+    document.querySelector("body").appendChild(buttonDiv);
+    
     let t = 0;
     let tick = () => { 
         if (t<1000) {
