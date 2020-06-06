@@ -62,8 +62,6 @@ let navAnchors = document.querySelectorAll('nav>a');
 navAnchors.forEach((e,i)=>{
   let aText = siteContent.nav[`nav-item-${i+1}`];
   e.innerText = aText; e.href = `#${aText}`
-  e.className = "";
-  //add location check to modify className (later)
 });
 
 let h4Nodes = document.querySelectorAll(".text-content>h4");
@@ -83,16 +81,30 @@ Object.values(siteContent.contact).forEach((e,i)=>{
 3
 * [ ] Change the color of the navigation text to be green.
 */
-document.querySelectorAll("header>nav>a").forEach(e=>e.style = "color: lightgreen; background: #333; padding: 1em");
+let updateNavCSS = () => {
+  document.querySelectorAll("header>nav>a").forEach(e=>e.style = "color: lightgreen; background: #333; padding: 1em");
+}
 /*
 * [ ] Utilize `.appendChild()` and `.prepend()` to add two new items to the navigation system. You can call them whatever you want.
 * [ ] Check your work by looking at the [original html](original.html) in the browser
 */
 // document.querySelector("header>nav").appendChild()
-
-
+let newNav = ["News","Careers"];
+newNav.forEach(e=>{
+  let HTMLelement = document.createElement("a");
+  HTMLelement.href = `#${e}`;
+  HTMLelement.innerText = e;
+  document.querySelector("nav").appendChild(HTMLelement);
+})
+updateNavCSS();
 /*
 stretch
 * [ ] Update styles throughout the page as you see fit. Study what happens when you updated the DOM using style in JavaScript.  
+*/
+
+document.querySelector("html").style = "background: #222; color: #eee;"
+
+/*
 * [ ] Study tomorrow's lesson on events and try to integrate a button that can update content on the site with a click of a button.  You could build a similar data object with new values to help you test the click event.
 */
+
