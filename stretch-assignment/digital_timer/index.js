@@ -26,6 +26,7 @@ class timer {
         document.querySelector("#stopButton").disabled = true;
     }
     reset = () => { 
+        clearInterval(this.tickInterval); 
         this.t = 0; 
         this.updateDOM(); 
         document.querySelector(".digits").classList.remove("redDigit");
