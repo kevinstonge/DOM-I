@@ -18,8 +18,6 @@ window.addEventListener('load',()=>{
         } 
     }
     var tickInterval = setInterval(tick, 10);
-
-
 })
 
 /*
