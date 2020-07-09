@@ -10,59 +10,49 @@ class timer {
         }  
         else {
             document.querySelector(".digits").classList.add("redDigit");
-            document.querySelector("#startButton").disabled = true;
-            document.querySelector("#stopButton").disabled = true;
+            this.disableButtons({start:true,stop:true})
             clearInterval(this.tickInterval);
         } 
     }
     start = () => { 
-        document.querySelector("#startButton").disabled = true;
-        document.querySelector("#stopButton").disabled = false;
+        this.disableButtons({start:true,stop:false})
         this.tickInterval = setInterval(this.tick,10); 
     }
     stop = () => { 
         clearInterval(this.tickInterval); 
-        document.querySelector("#startButton").disabled = false;
-        document.querySelector("#stopButton").disabled = true;
+        this.disableButtons({start:false,stop:true})
     }
     reset = () => { 
         clearInterval(this.tickInterval); 
         this.t = 0; 
         this.updateDOM(); 
         document.querySelector(".digits").classList.remove("redDigit");
-        document.querySelector("#startButton").disabled = false;
-        document.querySelector("#stopButton").disabled = true;
-}
+        this.disableButtons({start:false,stop:true})
+    }
     updateDOM = () => {
         let tS = this.t.toString();
         ["msTens","msHundreds","secondOnes","secondTens"].forEach((e,i)=>{
             document.querySelector(`#${e}`).innerText = tS[tS.length-i-1] || 0;
         });
     }
+    disableButtons = (stateObject) => {
+        Object.keys(stateObject).forEach(e=>{document.querySelector(`#${e}Button`).disabled = stateObject[e]})
+    }
 }
 
 function createButtons() {
+    const timer1 = new timer();
     const buttonDiv = document.createElement("div");
     buttonDiv.id = "buttonDiv";
     document.querySelector("body").appendChild(buttonDiv);
-    const startButton = document.createElement("button");
-    startButton.id = "startButton";
-    startButton.innerText = "start";
-    buttonDiv.appendChild(startButton);
-    startButton.addEventListener('click',()=>{timer1.start()});
-    const stopButton = document.createElement("button");
-    stopButton.id = "stopButton";
-    stopButton.innerText = "stop";
-    buttonDiv.appendChild(stopButton);
-    stopButton.addEventListener('click',()=>{timer1.stop()});
-    const resetButton = document.createElement("button");
-    resetButton.id = "reset";
-    resetButton.innerText = "reset";
-    buttonDiv.appendChild(resetButton);
-    resetButton.addEventListener('click',()=>{timer1.reset()});
+    ["start","stop","reset"].forEach(e=>{
+        const button = document.createElement("button");
+        button.id = `${e}Button`;
+        button.innerText = e;
+        buttonDiv.appendChild(button);
+        button.addEventListener('click',()=>{timer1[e]()})
+    })
 }
-
-const timer1 = new timer();
 
 window.addEventListener('load',()=>{createButtons();})
 
