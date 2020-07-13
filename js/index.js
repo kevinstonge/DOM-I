@@ -58,6 +58,11 @@ middleImg.src = siteContent["main-content"]["middle-img-src"];
 let ctaImg = document.querySelector("#cta-img");
 ctaImg.src = siteContent["cta"]["img-src"]
 
+let ctaH1 = document.querySelector(".cta-text>h1");
+ctaH1.innerText = siteContent["cta"]["h1"];
+let ctaButton = document.querySelector(".cta-text>button");
+ctaButton.innerText = siteContent["cta"]["button"]
+
 let navAnchors = document.querySelectorAll('nav>a');
 navAnchors.forEach((e,i)=>{
   let aText = siteContent.nav[`nav-item-${i+1}`];
@@ -89,13 +94,16 @@ let updateNavCSS = () => {
 * [ ] Check your work by looking at the [original html](original.html) in the browser
 */
 // document.querySelector("header>nav").appendChild()
-let newNav = ["News","Careers"];
-newNav.forEach(e=>{
-  let HTMLelement = document.createElement("a");
-  HTMLelement.href = `#${e}`;
-  HTMLelement.innerText = e;
-  document.querySelector("nav").appendChild(HTMLelement);
-})
+let newsButton = document.createElement("a");
+newsButton.href = `#news`;
+newsButton.innerText = "News";
+document.querySelector("nav").prepend(newsButton);
+
+let careersButton = document.createElement("a");
+careersButton.href = `##careers`;
+careersButton.innerText = "Careers";
+document.querySelector("nav").appendChild(careersButton);
+
 updateNavCSS();
 /*
 stretch
