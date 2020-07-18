@@ -1,9 +1,33 @@
+* {
+  box-sizing: border-box;
+}
+html {
+  background: #222;
+}
 body {
   display: flex;
+  width: 100vw;
+  max-width: 24rem;
+  margin: auto;
+  padding: 1rem;
+  border: 1px outset #666;
+  margin-top: 1rem;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: #333;
+  box-shadow: 0.3rem 0.3rem 0.3rem black;
+  color: #8f8;
 }
-
+.digits {
+  width: 100%;
+  text-align: center;
+  border: 1px inset #666;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background-color: black;
+  font-family: 'Courier New', Courier, monospace;
+}
 .digit {
   display: inline-block;
   font-size: 80px;
@@ -11,4 +35,37 @@ body {
 
 .redDigit {
   color: red;
+}
+
+#buttonDiv {
+  width: 18rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  font-size: 1.4rem;
+  padding: 0.5rem;
+  outline: none;
+  background-color: #222;
+  border: 1px outset #999;
+  color: #eee;
+  border-radius: 0.2rem;
+}
+
+button:disabled {
+  border: 1px dotted #999;
+  color: #888;
+}
+
+button:active {
+  border: 1px inset #999;
+}
+
+button:hover {
+  background-color: #333;
+}
+
+button:disabled:hover {
+  background-color: #222;
 }
